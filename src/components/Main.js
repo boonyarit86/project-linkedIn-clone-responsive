@@ -1,10 +1,15 @@
 import { connect } from "react-redux";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import PostModal from "./PostModal";
+import { getArticleAPI } from "../actions";
 
 const Main = (props) => {
   const [showModal, setShowModal] = useState("close");
+  console.log(props.user)
+  useEffect(() => {
+    props.getArticles();
+  }, [])
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -29,10 +34,15 @@ const Main = (props) => {
     <Container>
       <ShareBox>
         <div>
-          <img src="/images/user.svg" alt="" />
-          <button onClick={handleClick} >Start a post</button>
+          {props.user && props.user.photoURL ? (
+            <img src={props.user.photoURL} alt="" />
+          ) : (
+            <img src="/images/user.svg" alt="" />
+          )}
+          <button onClick={handleClick} disabled={props.loading ? true : false}>
+            Start a post
+          </button>
         </div>
-
         <div>
           <button>
             <img src="/images/photo-icon.png" alt="" />
@@ -55,7 +65,8 @@ const Main = (props) => {
           </button>
         </div>
       </ShareBox>
-      <div>
+      <Content>
+        {props.loading && <img src="/images/spin-loader.svg" alt="" />}
         <Article>
           <ShareActor>
             <a>
@@ -107,7 +118,7 @@ const Main = (props) => {
             </button>
           </SocialActions>
         </Article>
-      </div>
+      </Content>
       <PostModal showModal={showModal} handleClick={handleClick} />
     </Container>
   );
@@ -317,10 +328,23 @@ const SocialActions = styled.div`
   }
 `;
 
+const Content = styled.div`
+  text-align: center;
+  & > img {
+    width: 30px;
+  }
+`;
+
+
 const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
+    loading: state.articleState.loading,
   };
 };
 
-export default connect(mapStateToProps)(Main);
+const mapDispatchToProps = (dispatch) => ({
+  getArticles: () => dispatch(getArticleAPI())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
