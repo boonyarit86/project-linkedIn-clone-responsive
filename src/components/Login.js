@@ -18,7 +18,7 @@ const Login = (props) => {
       </Nav>
       <Section>
         <Hero>
-          <h1>Welcome to your anime community</h1>
+          <h1>Welcome to your professional community</h1>
           <img src="/images/login-hero.svg" alt="" />
         </Hero>
         <Form>

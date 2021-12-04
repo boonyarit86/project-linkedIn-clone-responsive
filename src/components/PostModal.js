@@ -115,10 +115,10 @@ const PostModal = (props) => {
             <ShareCreation>
               <AttachAssets>
                 <AssetButton onClick={() => switchAssetArea("image")}>
-                  <img src="/images/share-icon.png" alt="" />
+                  <img src="/images/image-icon.svg" alt="" />
                 </AssetButton>
                 <AssetButton onClick={() => switchAssetArea("media")}>
-                  <img src="/images/share-icon.png" alt="" />
+                  <img src="/images/video-icon.svg" alt="" />
                 </AssetButton>
               </AttachAssets>
               <ShareComment>
@@ -267,10 +267,11 @@ const PostButton = styled.button`
   padding-left: 16px;
   padding-right: 16px;
   background: ${(props) => (props.disabled ? "rgba(0, 0, 0, 0.8)" : "#0a66c2")};
-  color: ${(props) => (props.disabled ? "rgba(1, 1, 1, 0.2)" : "#fff")};
+  color: #fff;
   &:hover {
     background: ${(props) =>
       props.disabled ? "rgba(0, 0, 0, 0.08)" : "#004182"};
+    color: ${(props) => (props.disabled ? "#000" : "#fff")};
   }
 `;
 
