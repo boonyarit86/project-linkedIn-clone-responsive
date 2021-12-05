@@ -234,6 +234,7 @@ const AssetButton = styled.button`
   height: 40px;
   min-width: auto;
   color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
   img {
     width: 24px;
     height: 24px;
@@ -268,6 +269,7 @@ const PostButton = styled.button`
   padding-right: 16px;
   background: ${(props) => (props.disabled ? "rgba(0, 0, 0, 0.8)" : "#0a66c2")};
   color: #fff;
+  cursor: pointer;
   &:hover {
     background: ${(props) =>
       props.disabled ? "rgba(0, 0, 0, 0.08)" : "#004182"};

@@ -183,6 +183,11 @@ const ShareBox = styled(CommonCard)`
       display: flex;
       align-items: center;
       font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        background: #efefef;
+      }
     }
     &:first-child {
       display: flex;
@@ -344,6 +349,11 @@ const SocialActions = styled.div`
     color: #0a66c2;
     border: none;
     background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background: #efefef;
+    }
 
     @media (min-width: 768px) {
       span {
